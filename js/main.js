@@ -20,21 +20,18 @@ export function onAddMarker() {
 }
 
 
-export function renderLocationName(){
+export function renderLocationName() {
     locService.getPosition()
         .then(myPos => {
             let lat = myPos.coords.latitude;
             let lng = myPos.coords.longitude;
             console.log(myPos.coords)
-            locService.getFormattedAddressByLocation(lat,lng)
+            locService.getFormattedAddressByLocation(lat, lng)
                 .then(res => {
                     document.querySelector('.formatted-address').innerText = res
                 })
         })
 }
-
-// locService.getLocs()
-//     .then(locs => console.log('locs', locs))
 
 window.onload = () => {
     mapService.initMap()
@@ -45,10 +42,10 @@ window.onload = () => {
                         let lat = myPos.coords.latitude;
                         let lng = myPos.coords.longitude;
                         console.log(myPos.coords)
-                        mapService.addMarker({ lat: lat, lng: lng },'You are here');
+                        mapService.addMarker({ lat: lat, lng: lng }, 'You are here');
                         mapService.panTo({ lat: lat, lng: lng })
-                        weatherService.getWeatherByLocation(lat,lng).then(res => {
-                            console.log(res)
+                        weatherService.getWeatherByLocation(lat, lng).then(res => {
+                            renderWeather(res);
                         })
                     })
             }
@@ -65,14 +62,23 @@ window.onload = () => {
         })
 }
 
-// document.querySelector('.btn1').onclick =  () => {
-//     console.log('Thanks!');
-// }
+ 
+
+export function renderWeather(weather) {
+    var strHTML = `
+        <h4><span>What\'s going on in ${weather.name}? <h4><br/>
+        <h5>${weather.text} with ${weather.temp}°C and ${weather.humidity}% humidity</span></h5>`
 
 
+    // for (let key in weather) {
+    //     var niceKey = key.charAt(0).toUpperCase()+key.slice(1).replace('_','')
+    //     strHTML += `<li>${niceKey}:${weather[key]}</li>`
+    // }
+    document.querySelector('.weather-stats').innerHTML = strHTML;
+}
 
 
-//Event Listeners
+// Event Listeners
 
 document.querySelector('.my-location-go').addEventListener('click', (ev) => {
     console.log('Aha!', ev.target);
@@ -86,7 +92,7 @@ document.querySelector('.location-search-go').addEventListener('click', (ev) => 
     // console.log('Aha!', ev);
     let elSearchInput = document.querySelector('.location-search-input').value
     console.log('User pressed "GO" and searched for:', elSearchInput);
-    let searchStr = elSearchInput.replace(/\s/ig,'+').toLowerCase()
+    let searchStr = elSearchInput.replace(/\s/ig, '+').toLowerCase()
     console.log(searchStr)
 
 })
@@ -96,13 +102,13 @@ document.querySelector('.location-search-input').addEventListener('keydown', (ev
         // console.log('Aha!', ev);
         let elSearchInput = document.querySelector('.location-search-input').value
         console.log('User pressed enter and searched for:', elSearchInput);
-        let searchStr = elSearchInput.replace(/\s/ig,'+').toLowerCase()
+        let searchStr = elSearchInput.replace(/\s/ig, '+').toLowerCase()
         console.log(searchStr)
         locService.getLocationBySearch(searchStr)
             .then(res => {
                 let lat = res.lat
                 let lng = res.lng
-                mapService.panTo(lat,lng)
+                mapService.panTo(lat, lng)
             })
     }
 })
@@ -111,8 +117,8 @@ document.querySelector('.my-location-go').addEventListener('click', (ev) => {
     locService.getPosition().then(myPos => {
         let lat = myPos.coords.latitude
         let lng = myPos.coords.longitude
-        console.log(lat,lng)
-        mapService.panTo(lat,lng)
+        console.log(lat, lng)
+        mapService.panTo(lat, lng)
     })
     renderLocationName()
 })

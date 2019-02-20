@@ -10,6 +10,17 @@ function getWeatherByLocation(lat,lng){
 
     console.log('apiUrl',apiUrl);
     var res = axios.get(apiUrl)
-        .then(res => console.log(res.data))
+        .then(res => {
+            console.log(res.data)
+
+            return {
+                temp: res.data.main.temp,
+                min_temp: res.data.main.temp_min,
+                max_temp: res.data.main.temp_max,
+                humidity: res.data.main.humidity,
+                text: res.data.weather[0].description,
+                name: res.data.name
+            }
+        })
     return res
 }

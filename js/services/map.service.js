@@ -23,11 +23,14 @@ function initMap(lat = 32.0749831, lng = 34.9120554) {
                 })
             let elInput = document.querySelector('.location-search-input')
             let autocomplete = new google.maps.places.Autocomplete(elInput)
-            autocomplete.addListener('place_changed', function () {
+            autocomplete.addListener('place_changed', () => {
                 let place = autocomplete.getPlace();
-                console.log(place);
-                panTo(place.geometry.location.lat(), place.geometry.location.lng());
+                console.log('Wowza',place);
+                let newLocation = place.geometry.location;
+                panTo(newLocation.lat(), newLocation.lng());
                 // document.querySelector('.selected-location').innerText = place.formatted_address
+                map.setZoom(17);
+                addMarker(newLocation,'here')
             })
             console.log('Map!', map);
         })
@@ -48,6 +51,7 @@ function addMarker(loc, name) {
 function panTo(lat, lng) {
     var laLatLng = new google.maps.LatLng(lat, lng);
     map.panTo(laLatLng);
+    map.setZoom(20);
 }
 
 function _connectGoogleApi() {

@@ -1,5 +1,9 @@
 
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
 
+* {
+    font-family: 'Quicksand', sans-serif;
+}
 
 
 /* Layout */
@@ -7,45 +11,85 @@
 .main-container {
     height: 100vh;
     width: 100%;
-    background-color: yellow;
+    background-color: whitesmoke;
     grid-template-areas: 
     "header"
     "location"
     "main"
     "footer";
     /* grid-template-columns: 100%; */
-    grid-template-rows: 15vh 10vh 1fr 5vh
+    grid-template-rows: 200px 50px 1fr 50px;
 }
 
 header {
     grid-area: header;
-    background-color: rebeccapurple;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(176, 200, 231);
     padding: 30px;
+    /* height: 140px; */
+    border-bottom: 1px solid rgb(51, 50, 50);
+    align-items: center;
+}
+@media (min-width: 860px){
+    header {
+        flex-direction: row;
+        justify-content: space-around
+    }
 }
 
 .inner-container {
     grid-area: main;
+    display: flex;
+    flex-direction: column;
+    flex-direction: column-reverse;
+    width: 100vw;
+}
+@media (min-width: 680px){
+    .inner-container {
+        grid-area: main;
+        display: grid;
+        grid-template-areas: 
+        "weather map";
+        grid-template-rows: 100%;
+        grid-template-columns: 33% 1fr;
+        width: 100vw;
+    }  
 }
 
 .location-container {
     grid-area: location;
-    background-color: blue;
+    background-color: whitesmoke;
+    text-align: center;
+    padding-top: 10px;
 }
 
 .weather-container {
     grid-area: weather;
     width: 400px;
-    background-color: red;
+    background-color: whitesmoke;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
 }
 
 .map-container {
     grid-area: map;
+    flex-grow: 1;
+    border: 1px solid gray;
 }
 
 footer {
     grid-area: footer;
-    background-color: green;
+    background-color: darkslategray;
     height: 50px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    color:white;
 }
 
 
@@ -57,9 +101,10 @@ footer {
 }
 
 h1 {
-    color: white;
+    color: darkslategray;
     font-size: 3rem;
-    margin-right: 20px;
+    /* margin-right: 40px; */
+    font-family: 'Quicksand';
 }
 
 .location-search-input {
@@ -67,6 +112,14 @@ h1 {
     height: 40px;
     border-radius: 15px;
     margin-top: 10px;
+    padding-left: 20px;
+    border: none;
+    margin-right: 20px;
+    outline: none;
+}
+
+.location-search-go {
+    margin-right: 20px;
 }
 
 
