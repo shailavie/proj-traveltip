@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shai's Travel Tip</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="lib/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="icon" href="img/icon.png" type="image/gif" sizes="16x16">
+</head>
+
+<body>
+    <div class="main-container grid ">
+        <header class="flex">
+            <h1>Travel Tip</h1>
+            <div class="search-location-container">
+                <input class="location-search-input" type="text">
+                    <input id="pac-input" type="text" placeholder="Enter a location">
+                <button class="btn btn-primary location-search-go">Go</button>
+                <button class="btn btn-secondary my-location-go">My Location</button>
+                <button class="qa-btn">add marker</button>
+            </div>
+        </header>
+        <div class="location-container">
+            <h2 class="formatted-address"></h2>
+        </div>
+        <div class="inner-container flex">
+            <div class="weather-container">
+                Weather
+            </div>
+            <div class="map-container" id="map" style="width:50%; height: 400px;"></div>
+        </div>
+        <footer>Footer</footer>
+    </div>
+
+    <script src="lib/axios.js"></script>
+    <script type="module" src="js/main.js"></script>
+    <!-- <script  src="js/main.js"></script> -->
+</body>
+
+</html>

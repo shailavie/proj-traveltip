@@ -1,0 +1,91 @@
+
+
+
+
+/* Layout */
+
+.main-container {
+    height: 100vh;
+    width: 100%;
+    background-color: yellow;
+    grid-template-areas: 
+    "header"
+    "location"
+    "main"
+    "footer";
+    /* grid-template-columns: 100%; */
+    grid-template-rows: 15vh 10vh 1fr 5vh
+}
+
+header {
+    grid-area: header;
+    background-color: rebeccapurple;
+    padding: 30px;
+}
+
+.inner-container {
+    grid-area: main;
+}
+
+.location-container {
+    grid-area: location;
+    background-color: blue;
+}
+
+.weather-container {
+    grid-area: weather;
+    width: 400px;
+    background-color: red;
+}
+
+.map-container {
+    grid-area: map;
+}
+
+footer {
+    grid-area: footer;
+    background-color: green;
+    height: 50px;
+}
+
+
+
+/* Componants */
+
+.search-location-container {
+
+}
+
+h1 {
+    color: white;
+    font-size: 3rem;
+    margin-right: 20px;
+}
+
+.location-search-input {
+    width: 300px;
+    height: 40px;
+    border-radius: 15px;
+    margin-top: 10px;
+}
+
+
+
+/* Helpers */
+
+.grid {
+    display: grid;
+}
+
+.flex {
+    display: flex;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.responsive {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr))
+}
+
