@@ -18,7 +18,7 @@
     "main"
     "footer";
     /* grid-template-columns: 100%; */
-    grid-template-rows: 200px 50px 1fr 50px;
+    grid-template-rows: 220px 50px 1fr 50px;
 }
 
 header {
@@ -30,11 +30,13 @@ header {
     /* height: 140px; */
     border-bottom: 1px solid rgb(51, 50, 50);
     align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 @media (min-width: 860px){
     header {
         flex-direction: row;
-        justify-content: space-around
+        /* justify-content: space-around */
     }
 }
 
@@ -42,7 +44,7 @@ header {
     grid-area: main;
     display: flex;
     flex-direction: column;
-    flex-direction: column-reverse;
+    /* flex-direction: column-reverse; */
     width: 100vw;
 }
 @media (min-width: 680px){
@@ -66,13 +68,22 @@ header {
 
 .weather-container {
     grid-area: weather;
-    width: 400px;
+    width: auto;
     background-color: whitesmoke;
     display: flex;
+    flex-direction: row;
     align-items: center;
     text-align: center;
+    justify-content: center;
     padding: 10px;
     margin: 10px;
+
+}
+
+.weather-stats {
+    word-break: break-all;
+    line-break: auto;
+
 }
 
 .map-container {
@@ -97,30 +108,38 @@ footer {
 /* Componants */
 
 .search-location-container {
-
+    justify-content: flex-start;
+    text-align: left;
 }
 
 h1 {
     color: darkslategray;
     font-size: 3rem;
-    /* margin-right: 40px; */
+    margin-right: 40px;
     font-family: 'Quicksand';
 }
 
 .location-search-input {
-    width: 300px;
+    width: auto;
+    min-width: 50px;
     height: 40px;
     border-radius: 15px;
     margin-top: 10px;
     padding-left: 20px;
     border: none;
-    margin-right: 20px;
+    margin-right: 10px;
     outline: none;
 }
-
-.location-search-go {
-    margin-right: 20px;
+@media (min-width:680px){
+    .location-search-input {
+        width: 300px;
+    }
 }
+
+.btn-my-location-go, .btn-search-location-go {
+    margin: 5px;
+}
+
 
 
 
